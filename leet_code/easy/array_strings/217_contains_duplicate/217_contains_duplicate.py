@@ -1,16 +1,9 @@
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        numMap = {}
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        nums.sort()
         n = len(nums)
 
-        # Build the hash table
-        for i in range(n):
-            numMap[nums[i]] = i
-
-        # Find the complement
-        for i in range(n):
-            complement = target - nums[i]
-            if complement in numMap and numMap[complement] != i:
-                return [i, numMap[complement]]
-
-        return []  # No solution found
+        for i in range(1, n):
+            if nums[i] == nums[i - 1]:
+                return True
+        return False
